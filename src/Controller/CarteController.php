@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller; 
+use App\Entity\Carte;
 
 class CarteController extends Controller
 {
@@ -12,11 +13,13 @@ class CarteController extends Controller
      */
     public function get_carte()
     {
+        $repo = $this->getDoctrine()->getRepository(Carte::class);
+
+        $cartes = $repo->findAll();
+        
         return $this->render('carte/index.html.twig', [
             'controller_name' => 'CarteController',
-            'classique' => 'La classique',
-            'carnivore' => 'La carnivore',
-            'vegetarienne' => 'La végétarienne',
+            'cartes' => $cartes,
         ]);
     }
 

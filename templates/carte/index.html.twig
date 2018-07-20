@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}ArrayOport{{ controller_name }}!{% endblock %}
+{% block title %}ArrayOport{{ controller_name }}{% endblock %}
 
 {% block body %}
 <style>
@@ -8,35 +8,18 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-    <article>
-        <h2>{{ classique }}</h2>
-        <div class="metadate">Créer le 19/07/18 à 19:30 dans la catégorie Les classiques</div>
-        <div class="content">
-            <img src="http://placehold.it/350x150" alt="">
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia consequuntur, assumenda quo aperiam delectus nam?</p>
-            <p>Hic rem laborum amet dolore iusto illum recusandae laboriosam atque. Omnis aspernatur earum libero quam.</p>
-            <a href="{{ path('carte_id')}}" class="btn btn-primary">Lire la suite</a>
-        </div>
-    </article>
-    <article>
-        <h2>{{ carnivore }}</h2>
-        <div class="metadate">Créer le 19/07/18 à 19:30 dans la catégorie Les classiques</div>
-        <div class="content">
-            <img src="http://placehold.it/350x150" alt="">
-            <p>Quas exercitationem unde adipisci blanditiis quos incidunt consequuntur voluptatibus. Iste blanditiis aperiam incidunt quam necessitatibus.</p>
-            <p>Delectus sit perferendis mollitia facilis reprehenderit quaerat sed maxime! Nisi, earum aspernatur? Corporis, assumenda quasi.</p>
-            <a href="" class="btn btn-primary">Lire la suite</a>
-        </div>
-    </article>
-    <article>
-        <h2>{{ vegetarienne }}</h2>
-        <div class="metadate">Créer le 19/07/18 à 19:30 dans la catégorie Les classiques</div>
-        <div class="content">
-            <img src="http://placehold.it/350x150" alt="">
-            <p>Quas vel laboriosam laudantium eveniet earum sequi iusto, dolorum suscipit fugit dicta tempore temporibus cupiditate.</p>
-            <p>Minus, placeat aliquam maiores modi neque ut deserunt exercitationem quod nemo facere sit impedit excepturi?</p>
-            <a href="" class="btn btn-primary">Lire la suite</a>
-        </div>
-    </article>
+<section class="carte">
+    {% for carte in cartes %}
+        <article>
+            <h2>{{ carte.nom }}</h2>
+            <div class="metadate">Créer le 19/07/18 à 19:30 dans la catégorie Les classiques</div>
+            <div class="content">
+                <img src="http://placehold.it/350x150" alt="">
+                <p>{{ carte.description }}</p>
+                <a href="{{ path('carte_id')}}" class="btn btn-primary">Lire la suite</a>
+            </div>
+        </article>
+    {% endfor %}
+</section>
 
 {% endblock %}
