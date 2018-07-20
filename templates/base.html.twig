@@ -132,15 +132,13 @@
         <div class="collapse navbar-collapse" id="navbarColor01">
           <ul class="navbar-nav mr-auto">
               <li class="nav-item">
-                <a class="nav-link" href="/">Accueil
-                  <span class="sr-only">(current)</span>
-                </a>
+                <a class="nav-link" href="{{ path('home') }}">Accueil</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/carte">Cartes</a>
+                <a class="nav-link" href="{{ path('carte') }}">Cartes</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#"></a>
+                <a class="nav-link" href="{{ path('create') }}">Créer un Menu</a>
               </li>
         </div>
         <button type="button" class="btn btn-success">Inscription</button>

@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{# {% form_theme form 'bootstrap_4_layout.html.twig' %} #}
+
+{% block body %}
+
+    <h1>Création d'un Menu</h1>
+
+    {{ form_start(formMenu)}}
+
+    {{ form_widget(formMenu) }}
+
+    <button type="submit" class="btn btn-success">Enregistrer</button>
+
+    {{ form_end(formMenu)}}
+
+{% endblock %}

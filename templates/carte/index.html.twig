@@ -12,11 +12,11 @@
     {% for carte in cartes %}
         <article>
             <h2>{{ carte.nom }}</h2>
-            <div class="metadate">Créer le 19/07/18 à 19:30 dans la catégorie Les classiques</div>
+            <div class="metadate">Créer le 19/07/18 à 19:30</div>
             <div class="content">
-                <img src="http://placehold.it/350x150" alt="">
-                <p>{{ carte.description }}</p>
-                <a href="{{ path('carte_id')}}" class="btn btn-primary">Lire la suite</a>
+                <img src="http://placehold.it/300x200" alt="">
+                <p style="word-wrap: break-word;">{{ carte.description }}</p>
+                <a href="{{ path('menu', {'id': carte.id })}}" class="btn btn-primary">Lire la suite</a>
             </div>
         </article>
     {% endfor %}
