@@ -18,41 +18,36 @@ class MenuController extends Controller
 
     /**
      * @Route("/carte/menu/create", name="create")
+     * @Route("/carte/menu/{id}/edit", name="edit")
      */
-    public function create_menu(Request $request, ObjectManager $manager)
+    public function menu(Menu $menu = null, Request $request, ObjectManager $manager)
     {
-        $menu = new Menu();
+        if(!$menu){
+            $menu = new Menu();
+        }
         
         $form = $this->createFormBuilder($menu)
-
-                     ->add('nom', TextType::class, [
-                         'attr' => [
-                             'placeholder' => 'Nom du Menu'
-                         ]
-                     ])
-
-                     ->add('prix', TextType::class, [
-                        'attr' => [
-                            'placeholder' => 'Prix €'
-                        ]
-                     ])
-
-                     ->add('image', TextType::class, [
-                        'attr' => [
-                            'placeholder' => 'Image'
-                        ]
-                     ])
-
-                     ->add('description', TextareaType::class, [
-                        'attr' => [
-                            'placeholder' => 'Description'
-                        ]
-                     ])
+                     ->add('nom')
+                     ->add('prix')
+                     ->add('image')
+                     ->add('description')
+                     ->add('statut')
                      ->getForm();
+                     
+        $form->handleRequest($request);
 
-        return $this->render('menu/create.html.twig', [
-            'formMenu' => $form->createView()
-        ]);   
+        if($form->isSubmitted() && $form->isValid()){
+
+            $manager->persist($menu);
+            $manager->flush();
+
+            return $this->redirectToRoute('menu', ['id' => $menu->getId()]);
+        }
+            return $this->render('menu/create.html.twig', [
+                'formMenu' => $form->createView(),
+                'editMenu' => $menu->getId() !== null
+                ]);
+
     }
 
     /**
