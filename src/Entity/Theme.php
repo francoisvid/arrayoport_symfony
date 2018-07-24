@@ -9,6 +9,13 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Theme
 {
+    function __construct($nom)
+    {
+
+    $this->nom = $nom;
+    
+    }
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
