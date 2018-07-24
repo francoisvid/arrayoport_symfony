@@ -44,7 +44,9 @@ class MenuController extends Controller
             $manager->persist($menu);
             $manager->flush();
 
-            return $this->redirectToRoute('menu', ['id' => $menu->getId()]);
+            return $this->redirectToRoute('menu', [
+                'id' => $menu->getId()
+                ]);
         }
         dump($form);
             return $this->render('menu/create.html.twig', [
@@ -66,3 +68,5 @@ class MenuController extends Controller
 
 
 }
+
+

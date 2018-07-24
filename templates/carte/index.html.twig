@@ -8,17 +8,17 @@
 </style>
 
     <section class="carte">
-        {# {% for carte in cartes %} #}
+        {% for carte in cartes %}
             <article>
-                <h2>{nom}</h2>
-                <div class="metadate">Créer le 19/07/18 à 19:30</div>
+                <h2>{{ carte.nom }}</h2>
+                <div class="metadate">{{ carte.createdAt | date('d/m/y') }}</div>
                 <div class="content">
-                    <img src="http://placehold.it/300x200" alt="">
-                    <p style="word-wrap: break-word;">{description}</p>
-                    {# <a href="{{ path('menu', {'id': carte.id })}}" class="btn btn-primary">Lire la suite</a> #}
+                    <img src="{{ carte.image }}" alt="">
+                    <p style="word-wrap: break-word;">{{ carte.description }}</p>
+                    <a href="{{ path('menu', {'id': carte.id })}}" class="btn btn-primary">Lire la suite</a>
                 </div>
             </article>
-        {# {% endfor %} #}
+        {% endfor %}
     </section>
 
 {% endblock %}
