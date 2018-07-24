@@ -13,10 +13,11 @@
         {{ form_start(formMenu)}}
 
         {{ form_row(formMenu.nom,{'attr' : {'placeholder' : 'Nom du menu'}}) }}
-        {{ form_row(formMenu.prix,{'attr' : {'placeholder' : 'Prix du menu'}}) }}
         {{ form_row(formMenu.image,{'attr' : {'placeholder' : 'Image du menu'}}) }}
         {{ form_row(formMenu.description,{'attr' : {'placeholder' : 'Description'}}) }}
+        {# {{ form_row(formMenu.alergene,{'attr' : {'placeholder' : 'Alergene'}}) }} #}
         {{ form_row(formMenu.statut) }}
+        {# {{ form_row(formMenu.carte_id,{'attr' : {'placeholder' : 'Quelle est l\'id de la carte ?'}}) }} #}
 
         {% if editMenu  %}
             <button type="submit" class="btn btn-success">Modifier</button>

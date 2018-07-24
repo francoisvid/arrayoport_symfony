@@ -17,52 +17,52 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 class MenuController extends Controller
 {
 
-    // /**
-    //  * @Route("/carte/menu/create", name="create")
-    //  * @Route("/carte/menu/{id}/edit", name="edit")
-    //  */
-    // public function menu(Menu $menu = null, Request $request, ObjectManager $manager)
-    // {
-    //     if(!$menu){
-    //         $menu = new Menu();
-    //     }
+    /**
+     * @Route("/carte/menu/create", name="create")
+     * @Route("/carte/menu/{id}/edit", name="edit")
+     */
+    public function menu(Menu $menu = null, Request $request, ObjectManager $manager)
+    {
+        if(!$menu){
+            $menu = new Menu();
+        }
         
-    //     // $form = $this->createFormBuilder($menu)
-    //     //              ->add('nom')
-    //     //              ->add('prix')
-    //     //              ->add('image')
-    //     //              ->add('description')
-    //     //              ->add('statut')
-    //     //              ->getForm();
+        // $form = $this->createFormBuilder($menu)
+        //              ->add('nom')
+        //              ->add('prix')
+        //              ->add('image')
+        //              ->add('description')
+        //              ->add('statut')
+        //              ->getForm();
 
-    //     $form = $this->createForm(MenuType::class, $menu);
+        $form = $this->createForm(MenuType::class, $menu);
                      
-    //     $form->handleRequest($request);
+        $form->handleRequest($request);
 
-    //     if($form->isSubmitted() && $form->isValid()){
+        if($form->isSubmitted() && $form->isValid()){
 
-    //         $manager->persist($menu);
-    //         $manager->flush();
+            $manager->persist($menu);
+            $manager->flush();
 
-    //         return $this->redirectToRoute('menu', ['id' => $menu->getId()]);
-    //     }
-    //     dump($form);
-    //         return $this->render('menu/create.html.twig', [
-    //             'formMenu' => $form->createView(),
-    //             'editMenu' => $menu->getId() !== null
-    //             ]);
+            return $this->redirectToRoute('menu', ['id' => $menu->getId()]);
+        }
+        dump($form);
+            return $this->render('menu/create.html.twig', [
+                'formMenu' => $form->createView(),
+                'editMenu' => $menu->getId() !== null
+                ]);
 
-    // }
+    }
 
-    // /**
-    //  * @Route("/carte/menu/{id}", name="menu")
-    //  */
-    // public function get_menu_id(Menu $menu)
-    // {
-    //     return $this->render('menu/menu.html.twig', [
-    //         'menu' => $menu
-    //     ]);
-    // }
+    /**
+     * @Route("/carte/menu/{id}", name="menu")
+     */
+    public function get_menu_id(Menu $menu)
+    {
+        return $this->render('menu/menu.html.twig', [
+            'menu' => $menu
+        ]);
+    }
 
 
 }

@@ -33,20 +33,14 @@ class Menu
      */
     private $description;
 
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private $createdAt;
+
 
     /**
      * @ORM\Column(type="boolean")
      */
     private $statut;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $alergene;
+
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Carte", inversedBy="category")
@@ -62,6 +56,16 @@ class Menu
      * @ORM\OneToMany(targetEntity="App\Entity\Commentaire", mappedBy="menu")
      */
     private $contenu;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $createdAt;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $alergene;
 
     public function __construct()
     {
@@ -111,18 +115,6 @@ class Menu
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeInterface
-    {
-        return $this->createdAt;
-    }
-
-    public function setCreatedAt(\DateTimeInterface $createdAt): self
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
     public function getStatut(): ?bool
     {
         return $this->statut;
@@ -131,18 +123,6 @@ class Menu
     public function setStatut(bool $statut): self
     {
         $this->statut = $statut;
-
-        return $this;
-    }
-
-    public function getAlergene(): ?string
-    {
-        return $this->alergene;
-    }
-
-    public function setAlergene(string $alergene): self
-    {
-        $this->alergene = $alergene;
 
         return $this;
     }
@@ -217,6 +197,30 @@ class Menu
                 $contenu->setMenu(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(?\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getAlergene(): ?string
+    {
+        return $this->alergene;
+    }
+
+    public function setAlergene(?string $alergene): self
+    {
+        $this->alergene = $alergene;
 
         return $this;
     }

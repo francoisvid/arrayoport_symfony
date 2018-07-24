@@ -13,10 +13,12 @@ class MenuType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('prix')
             ->add('image')
             ->add('description')
             ->add('statut')
+            // ->add('alergene')
+            // ->add('created_at')
+            // ->add('carte_id')
         ;
     }
 
