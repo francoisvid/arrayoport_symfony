@@ -31,16 +31,16 @@ class Apprenant
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $adresse;
+    private $email;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Exercice", inversedBy="apprenants")
+     * @ORM\OneToMany(targetEntity="App\Entity\Resultat", mappedBy="apprenant")
      */
-    private $exercice;
+    private $resultats;
 
     public function __construct()
     {
-        $this->exercice = new ArrayCollection();
+        $this->resultats = new ArrayCollection();
     }
 
     public function getId()
@@ -72,39 +72,44 @@ class Apprenant
         return $this;
     }
 
-    public function getAdresse(): ?string
+    public function getEmail(): ?string
     {
-        return $this->adresse;
+        return $this->email;
     }
 
-    public function setAdresse(string $adresse): self
+    public function setEmail(string $email): self
     {
-        $this->adresse = $adresse;
+        $this->email = $email;
 
         return $this;
     }
 
     /**
-     * @return Collection|Exercice[]
+     * @return Collection|Resultat[]
      */
-    public function getExercice(): Collection
+    public function getResultats(): Collection
     {
-        return $this->exercice;
+        return $this->resultats;
     }
 
-    public function addExercice(Exercice $exercice): self
+    public function addResultat(Resultat $resultat): self
     {
-        if (!$this->exercice->contains($exercice)) {
-            $this->exercice[] = $exercice;
+        if (!$this->resultats->contains($resultat)) {
+            $this->resultats[] = $resultat;
+            $resultat->setApprenant($this);
         }
 
         return $this;
     }
 
-    public function removeExercice(Exercice $exercice): self
+    public function removeResultat(Resultat $resultat): self
     {
-        if ($this->exercice->contains($exercice)) {
-            $this->exercice->removeElement($exercice);
+        if ($this->resultats->contains($resultat)) {
+            $this->resultats->removeElement($resultat);
+            // set the owning side to null (unless already changed)
+            if ($resultat->getApprenant() === $this) {
+                $resultat->setApprenant(null);
+            }
         }
 
         return $this;

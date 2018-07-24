@@ -19,13 +19,13 @@ class Exercice
     private $id;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Apprenant", mappedBy="exercice")
+     * @ORM\OneToMany(targetEntity="App\Entity\Resultat", mappedBy="exercice")
      */
-    private $apprenants;
+    private $resultats;
 
     public function __construct()
     {
-        $this->apprenants = new ArrayCollection();
+        $this->resultats = new ArrayCollection();
     }
 
     public function getId()
@@ -34,28 +34,31 @@ class Exercice
     }
 
     /**
-     * @return Collection|Apprenant[]
+     * @return Collection|Resultat[]
      */
-    public function getApprenants(): Collection
+    public function getResultats(): Collection
     {
-        return $this->apprenants;
+        return $this->resultats;
     }
 
-    public function addApprenant(Apprenant $apprenant): self
+    public function addResultat(Resultat $resultat): self
     {
-        if (!$this->apprenants->contains($apprenant)) {
-            $this->apprenants[] = $apprenant;
-            $apprenant->addExercice($this);
+        if (!$this->resultats->contains($resultat)) {
+            $this->resultats[] = $resultat;
+            $resultat->setExercice($this);
         }
 
         return $this;
     }
 
-    public function removeApprenant(Apprenant $apprenant): self
+    public function removeResultat(Resultat $resultat): self
     {
-        if ($this->apprenants->contains($apprenant)) {
-            $this->apprenants->removeElement($apprenant);
-            $apprenant->removeExercice($this);
+        if ($this->resultats->contains($resultat)) {
+            $this->resultats->removeElement($resultat);
+            // set the owning side to null (unless already changed)
+            if ($resultat->getExercice() === $this) {
+                $resultat->setExercice(null);
+            }
         }
 
         return $this;
