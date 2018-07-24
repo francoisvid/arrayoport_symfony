@@ -5,11 +5,13 @@
   <meta charset="UTF-8">
 
   <title>{% block title %}ArrayOport{% endblock %}</title>
-
-  {% block stylesheets %}
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
     crossorigin="anonymous">
-  <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css"> 
+  <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.2/flatly/bootstrap.css">
+
+
+  {% block stylesheets %}
 
 <style>
     body{
@@ -132,17 +134,18 @@
         <div class="collapse navbar-collapse" id="navbarColor01">
           <ul class="navbar-nav mr-auto">
               <li class="nav-item">
-                <a class="nav-link" href="{{ path('home') }}">Accueil</a>
+                <a class="nav-link" href="">Accueil</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{ path('carte') }}">Cartes</a>
+                <a class="nav-link" href="">Cartes</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{ path('create') }}">Créer un Menu</a>
+                <a class="nav-link" href="">Créer un Menu</a>
               </li>
         </div>
         <button type="button" class="btn btn-success">Inscription</button>
-        <button type="button" class="btn btn-info">Connexion</button>
+        <a href="{{ path('login') }}"><button type="button" class="btn btn-info">Connexion</button></a>
+        <a href="{{ path('logout') }}"><button type="button" class="btn btn-danger" style="margin-left:10px">Deconnexion</button></a>
     </nav>
 
     <div class="container">

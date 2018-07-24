@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello {{ controller_name }}!{% endblock %}
+
+{% block body %}
+<div class="container" style="width:400px">
+  <form class="form-signin" method="POST" action="{{ path('login')}}">
+        <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72" style="margin: 30px 150px">
+        <h1 class="h3 mb-3 font-weight-normal">Veuillez vous Connecter !</h1>
+        <label for="name" class="sr-only">Email address</label>
+        <input type="text" name="_username" id="inputName" class="form-control" placeholder="Name" required="" autofocus=""><br>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" name="_password" id="inputPassword" class="form-control" placeholder="Password" required=""><br>
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Connexion</button>
+        <p class="mt-5 mb-3 text-muted" style="text-align:center">© François VIDAL 2018-2019</p>
+      </form>
+</div>
+{% endblock %}

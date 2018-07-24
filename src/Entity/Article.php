@@ -22,19 +22,26 @@ class Article
     private $nom;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $image;
+
+    /**
      * @ORM\Column(type="float")
      */
     private $prix;
 
     /**
-     * @ORM\Column(type="string", length=50)
-     */
-    private $provenance;
-
-    /**
      * @ORM\Column(type="boolean")
      */
     private $statut;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Menu", inversedBy="category")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $menu;
+
 
     public function getId()
     {
@@ -53,6 +60,18 @@ class Article
         return $this;
     }
 
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image): self
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
     public function getPrix(): ?float
     {
         return $this->prix;
@@ -61,18 +80,6 @@ class Article
     public function setPrix(float $prix): self
     {
         $this->prix = $prix;
-
-        return $this;
-    }
-
-    public function getProvenance(): ?string
-    {
-        return $this->provenance;
-    }
-
-    public function setProvenance(string $provenance): self
-    {
-        $this->provenance = $provenance;
 
         return $this;
     }
@@ -88,4 +95,17 @@ class Article
 
         return $this;
     }
+
+    public function getMenu(): ?Menu
+    {
+        return $this->menu;
+    }
+
+    public function setMenu(?Menu $menu): self
+    {
+        $this->menu = $menu;
+
+        return $this;
+    }
+
 }
