@@ -31,6 +31,11 @@ class Resultat
      */
     private $exercice;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Exercice", inversedBy="resultat")
+     */
+    private $resultat;
+
     public function getId()
     {
         return $this->id;
@@ -68,6 +73,18 @@ class Resultat
     public function setExercice(?Exercice $exercice): self
     {
         $this->exercice = $exercice;
+
+        return $this;
+    }
+
+    public function getResultat(): ?Exercice
+    {
+        return $this->resultat;
+    }
+
+    public function setResultat(?Exercice $resultat): self
+    {
+        $this->resultat = $resultat;
 
         return $this;
     }

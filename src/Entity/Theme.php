@@ -11,9 +11,7 @@ class Theme
 {
     function __construct($nom)
     {
-
-    $this->nom = $nom;
-    
+        $this->nom = $nom;
     }
 
     /**

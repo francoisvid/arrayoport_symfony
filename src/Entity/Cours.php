@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -31,6 +33,17 @@ class Cours
      * @ORM\JoinColumn(nullable=false)
      */
     private $theme;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Exercice", mappedBy="cours")
+     */
+    private $exercice;
+
+
+    public function __construct()
+    {
+        $this->exercice = new ArrayCollection();
+    }
 
     public function getId()
     {
@@ -71,5 +84,37 @@ class Cours
         $this->theme = $theme;
 
         return $this;
+    }
+
+
+    public function addExercice(Exercice $exercice): self
+    {
+        if (!$this->exercices->contains($exercice)) {
+            $this->exercices[] = $exercice;
+            $exercice->setCours($this);
+        }
+
+        return $this;
+    }
+
+    public function removeExercice(Exercice $exercice): self
+    {
+        if ($this->exercices->contains($exercice)) {
+            $this->exercices->removeElement($exercice);
+            // set the owning side to null (unless already changed)
+            if ($exercice->getCours() === $this) {
+                $exercice->setCours(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Exercice[]
+     */
+    public function getExercice(): Collection
+    {
+        return $this->exercice;
     }
 }

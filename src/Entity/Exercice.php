@@ -19,13 +19,23 @@ class Exercice
     private $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Resultat", mappedBy="exercice")
+     * @ORM\Column(type="string", length=255)
      */
-    private $resultats;
+    private $nom;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Cours", inversedBy="exercice")
+     */
+    private $cours;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Resultat", mappedBy="resultat")
+     */
+    private $resultat;
 
     public function __construct()
     {
-        $this->resultats = new ArrayCollection();
+        $this->resultat = new ArrayCollection();
     }
 
     public function getId()
@@ -33,19 +43,43 @@ class Exercice
         return $this->id;
     }
 
+    public function getNom(): ?string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(string $nom): self
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    public function getCours(): ?Cours
+    {
+        return $this->cours;
+    }
+
+    public function setCours(?Cours $cours): self
+    {
+        $this->cours = $cours;
+
+        return $this;
+    }
+
     /**
      * @return Collection|Resultat[]
      */
-    public function getResultats(): Collection
+    public function getResultat(): Collection
     {
-        return $this->resultats;
+        return $this->resultat;
     }
 
     public function addResultat(Resultat $resultat): self
     {
-        if (!$this->resultats->contains($resultat)) {
-            $this->resultats[] = $resultat;
-            $resultat->setExercice($this);
+        if (!$this->resultat->contains($resultat)) {
+            $this->resultat[] = $resultat;
+            $resultat->setResultat($this);
         }
 
         return $this;
@@ -53,11 +87,11 @@ class Exercice
 
     public function removeResultat(Resultat $resultat): self
     {
-        if ($this->resultats->contains($resultat)) {
-            $this->resultats->removeElement($resultat);
+        if ($this->resultat->contains($resultat)) {
+            $this->resultat->removeElement($resultat);
             // set the owning side to null (unless already changed)
-            if ($resultat->getExercice() === $this) {
-                $resultat->setExercice(null);
+            if ($resultat->getResultat() === $this) {
+                $resultat->setResultat(null);
             }
         }
 
