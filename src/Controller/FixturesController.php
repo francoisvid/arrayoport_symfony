@@ -21,6 +21,23 @@ class FixturesController extends Controller
         return new Response();
     }
 
+    /**
+     * @Route("/themes")
+     */
+    public function themes(){
+        $themes = $this->getDoctrine->getRepository(Theme::class)->findAll();
+        $moyennes = array();
+
+        foreach($themes as $theme)
+        {
+            $moyennes[$theme->getNom()] = array();
+
+        }
+
+    }
+
+    
+
 
 
     // /**
