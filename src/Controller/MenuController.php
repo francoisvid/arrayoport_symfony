@@ -59,10 +59,11 @@ class MenuController extends Controller
     /**
      * @Route("/carte/menu/{id}", name="menu")
      */
-    public function get_menu_id(Menu $menu)
+    public function get_menu_id(Menu $menu, MenuRepository $repo)
     {
+        $menus = $repo->findAll();
         return $this->render('menu/menu.html.twig', [
-            'menu' => $menu
+            'menus' => $menus
         ]);
     }
 

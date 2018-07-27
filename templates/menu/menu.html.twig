@@ -1,15 +1,21 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheet %}
+
+{% endblock %}
+
 {% block body %}
-    <section class="menu" style="width:800px; margin-left: 50px">
-            <p><h2>{{ menu.nom }}</h2><div class="metadate">Crée le {{ menu.createdAt | date('d/m/y') }}</div></p>
-            
+
+{% for menu in menus %}
+    <section class="menu" style="width:800px; margin-left: 50px;">
+            <p><h2>{{ menu.nom }}</h2><div class="metadate">Crée le {{ menu.createdAt | date('d/m/y') }}</div></p> 
                 <p>{{ menu.description }}</p>
                 <hr>
                 <div class="row">
-                        <img src="{{ menu.image }}" style="margin: 5px 5px">
-                        <img src="{{ menu.image }}" style="margin: 5px 5px">
+                    <img src="{{ menu.image }}" style="margin: 5px 5px">
+                    <img src="{{ menu.image }}" style="margin: 5px 5px">
                 </div>
-            <p>{{ menu.alergene }}</p>
+                <p>{{ menu.alergene }}</p>
     </section>
+{% endfor %}
 {% endblock %}

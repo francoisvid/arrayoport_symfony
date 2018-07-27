@@ -1,13 +1,17 @@
 body{
     color: black;
     padding: auto 200px;
-    background: #b5bdc8;
+    /* background: #b5bdc8;
     background: -moz-linear-gradient(left, #b5bdc8 0%, #828c95 36%, #28343b 100%);
     background: -webkit-linear-gradient(left, #b5bdc8 0%,#828c95 36%,#28343b 100%);
     background: linear-gradient(to right, #b5bdc8 0%,#828c95 36%,#28343b 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b5bdc8', endColorstr='#28343b',GradientType=1 );
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b5bdc8', endColorstr='#28343b',GradientType=1 ); */
 }
 
+.navbar .navbar-expand-lg .navbar-dark .bg-primary {
+    position:fixed !important; 
+    z-index: 1 !important;
+}
 .question{
     color: black;
     background-color: Gainsboro ;

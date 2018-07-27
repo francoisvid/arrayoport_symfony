@@ -10,17 +10,88 @@
   <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.2/flatly/bootstrap.css">
   <link rel="stylesheet" href="{{ asset('build/css/admin/admin.css') }}">
-  <link rel="stylesheet" href="{{ asset('build/css/morris/morris.css') }}">
   <link rel="stylesheet" href="{{ asset('build/css/barnav/barnav.css') }}">
-
+  <link rel="stylesheet" href="{{ asset('build/css/menu/menu.css') }}">
 
   {% block stylesheets %}  
+  <style>
+  /*
+ * Base structure
+ */
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+
+
+/*
+ * Typography
+ */
+
+
+h1 {
+  margin-bottom: 20px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid #eee;
+}
+
+/*
+ * Sidebar
+ */
+
+
+.sidebar {
+  position: fixed;
+  top: 20px;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  overflow-x: hidden;
+  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+  border-right: 1px solid #eee;
+  background-color: white;
+}
+
+/* Sidebar navigation */
+.sidebar {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.sidebar .nav {
+  margin-bottom: 20px;
+}
+
+.sidebar .nav-item {
+  width: 100%;
+}
+
+.sidebar .nav-item + .nav-item {
+  margin-left: 0;
+}
+
+.sidebar .nav-link {
+  border-radius: 0;
+}
+
+.placeholders {
+  padding-bottom: 3rem;
+}
+
+.placeholder img {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.navbar {
+  position: fixed;
+  z-index: 1;
+}
+
+  </style>
   {% endblock %}
 
 </head>
 
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary col-sm-12">
         <a class="navbar-brand" href="/">ArrayOport</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -29,13 +100,10 @@
         <div class="collapse navbar-collapse" id="navbarColor01">
           <ul class="navbar-nav mr-auto">
               <li class="nav-item">
-                <a class="nav-link" href="">Accueil</a>
+                <a class="nav-link" href="/">Accueil</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{ path('carte') }}">Cartes</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{ path('create') }}">Créer un Menu</a>
               </li>
         <a href="{{ path('admin') }}"><button type="button" class="btn btn-outline-secondary">Admin</button></a>
         </div>

@@ -16,15 +16,14 @@ Encore
 
     // uncomment to define the assets of the project
     .addEntry('js/admin/admin', './assets/js/admin.js')
-    .addEntry('js/morris/morris', './assets/morris/morris.js')
     .addEntry('js/bootstrap/bootstrap', './assets/bootstrap/bootstrap.js')
 
     .addStyleEntry('css/admin/admin', './assets/css/admin.css')
+    .addStyleEntry('css/carte/admin', './assets/css/carte.css')
+    .addStyleEntry('css/menu/admin', './assets/css/menu.css')
     .addStyleEntry('css/barnav/barnav', './assets/css/barnav.css')
-    .addStyleEntry('css/morris/morris', './assets/morris/morris.css')
+    
     .addStyleEntry('css/bootstrap/bootstrap', './assets/bootstrap/bootstrap.css')
-    .addStyleEntry('css/theme/sb-admin', './assets/css/sb-admin.css')
-    // .addStyleEntry('css/theme/sb-admin.min', './assets/css/sb-admin.min.css')
 
     // uncomment if you use TypeScript
     //.enableTypeScriptLoader()
